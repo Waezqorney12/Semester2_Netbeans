@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="226" pageHeight="842" columnWidth="186" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" >
+	<property name="ireport.zoom" value="3.4522712143931042"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="264"/>
+	<parameter name="Kode" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     transaksi.`Kode_Transaksi` AS transaksi_Kode_Transaksi,
+     transaksi.`Kode_Transaksi` AS transaksi_Kode_Transaksi,
+     transaksi.`Tanggal_Transaksi` AS transaksi_Tanggal_Transaksi,
+     transaksi.`Total_Harga` AS transaksi_Total_Harga,
+     transaksi.`Total_Harga` AS transaksi_Total_Harga,
+     transaksi.`Tanggal_Transaksi` AS transaksi_Tanggal_Transaksi,
+     transaksi.`Tunai` AS transaksi_Tunai,
+     transaksi.`Kembalian` AS transaksi_Kembalian,
+     transaksi.`Id_Kasir` AS transaksi_Id_Kasir,
+     transaksi.`Id_Kasir` AS transaksi_Id_Kasir,
+     detail_transaksi.`Kode_Transaksi` AS detail_transaksi_Kode_Transaksi,
+     detail_transaksi.`Kode_Transaksi` AS detail_transaksi_Kode_Transaksi,
+     detail_transaksi.`Kode_Barang` AS detail_transaksi_Kode_Barang,
+     detail_transaksi.`Jumlah_Barang` AS detail_transaksi_Jumlah_Barang,
+     detail_transaksi.`Sub_Total` AS detail_transaksi_Sub_Total,
+     barang.`Kode_Barang` AS barang_Kode_Barang,
+     barang.`Nama` AS barang_Nama,
+     barang.`Harga_Barang` AS barang_Harga_Barang,
+     kasir.`Nama` AS kasir_Nama
+FROM
+     `transaksi` transaksi INNER JOIN `detail_transaksi` detail_transaksi ON transaksi.`Kode_Transaksi` = detail_transaksi.`Kode_Transaksi`
+     INNER JOIN `barang` barang ON detail_transaksi.`Kode_Barang` = barang.`Kode_Barang`
+     INNER JOIN `kasir` kasir ON transaksi.`Id_Kasir` = kasir.`ID_Kasir`
+WHERE
+     transaksi.Kode_Transaksi = $P{Kode}]]>
+	</queryString>
+	<field name="transaksi_Kode_Transaksi" class="java.lang.String"/>
+	<field name="transaksi_Tanggal_Transaksi" class="java.sql.Date"/>
+	<field name="transaksi_Total_Harga" class="java.lang.Integer"/>
+	<field name="transaksi_Tunai" class="java.lang.Integer"/>
+	<field name="transaksi_Kembalian" class="java.lang.Integer"/>
+	<field name="transaksi_Id_Kasir" class="java.lang.String"/>
+	<field name="detail_transaksi_Kode_Transaksi" class="java.lang.String"/>
+	<field name="detail_transaksi_Kode_Barang" class="java.lang.String"/>
+	<field name="detail_transaksi_Jumlah_Barang" class="java.lang.Integer"/>
+	<field name="detail_transaksi_Sub_Total" class="java.lang.Integer"/>
+	<field name="barang_Kode_Barang" class="java.lang.String"/>
+	<field name="barang_Nama" class="java.lang.String"/>
+	<field name="barang_Harga_Barang" class="java.lang.Integer"/>
+	<field name="kasir_Nama" class="java.lang.String"/>
+	<variable name="transaksi_Total_Harga_1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{transaksi_Total_Harga}]]></variableExpression>
+	</variable>
+	<variable name="transaksi_Total_Harga_2" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{transaksi_Total_Harga}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="42" y="35" width="100" height="20" />
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ratna Stationery]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="55" width="139" height="12" />
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Jl.Pb.Sudirman No.45, Sumberbaru]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="42" y="67" width="100" height="12" />
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Kab.Jember, Jawa Timur]]></text>
+			</staticText>
+			<image>
+				<reportElement x="77" y="0" width="50" height="35" />
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\smalllogos.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="49" splitType="Stretch">
+			<line>
+				<reportElement x="-12" y="48" width="198" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="-12" y="28" width="78" height="20" />
+				<textFieldExpression><![CDATA[$F{transaksi_Tanggal_Transaksi}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-12" y="0" width="198" height="1" />
+			</line>
+			<textField>
+				<reportElement x="-12" y="1" width="77" height="15" />
+				<textFieldExpression><![CDATA[$F{detail_transaksi_Kode_Transaksi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="103" y="29" width="39" height="20" />
+				<textFieldExpression><![CDATA[$F{transaksi_Id_Kasir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="151" y="29" width="35" height="20" />
+				<textFieldExpression><![CDATA[$F{kasir_Nama}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="142" y="29" width="9" height="20" />
+				<text><![CDATA[/]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="-12" y="0" width="70" height="20" />
+				<textFieldExpression><![CDATA[$F{barang_Nama}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="65" y="0" width="21" height="20" />
+				<text><![CDATA[1  x]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="86" y="0" width="21" height="20" />
+				<textFieldExpression><![CDATA[$F{detail_transaksi_Jumlah_Barang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="0" width="59" height="20" />
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{barang_Harga_Barang}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="153" splitType="Stretch">
+			<textField>
+				<reportElement x="127" y="13" width="59" height="20" />
+				<box>
+					<pen lineStyle="Dashed"/>
+					<topPen lineStyle="Dashed"/>
+					<leftPen lineStyle="Dashed"/>
+					<bottomPen lineStyle="Dashed"/>
+					<rightPen lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{transaksi_Total_Harga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="33" width="59" height="20" />
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{transaksi_Tunai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="53" width="57" height="20" />
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{transaksi_Kembalian}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="86" y="13" width="41" height="20"/>
+				<text><![CDATA[Total   :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="86" y="33" width="41" height="20" />
+				<text><![CDATA[Tunai  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="53" width="69" height="20" />
+				<text><![CDATA[      Kembali  :]]></text>
+			</staticText>
+			<line>
+				<reportElement x="58" y="0" width="128" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="94" width="184" height="20" />
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[TERIMAKASIH TELAH BERBELANJA ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="114" width="186" height="20" />
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CALL CENTER 0812 4517 3122 -]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="133" width="186" height="20" />
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[asep123@gmail.com]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
